@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modernizing a critical platform without stopping the business — Dan Doran</title>
+<meta name="description" content="Case study: incremental Strangler-style modernization of Filmpac's Studio platform using federated GraphQL and coordinated Next.js frontends, retiring legacy components with no operational downtime.">
+<meta name="author" content="Dan Doran">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="canvas band-night">
+
+    <a class="backlink" href="../index.html">← Dan Doran</a>
+
+    <h1 class="article__title">Modernizing a critical platform without stopping the business</h1>
+
+    <p class="article__discipline">Legacy Modernization · Application Architecture · Data Systems</p>
+
+    <dl class="stats article__stats">
+        <div><dt>50+</dt><dd>Application views consolidated</dd></div>
+        <div><dt>Zero</dt><dd>Operational downtime</dd></div>
+        <div><dt>10–15 ms</dt><dd>Search-query latency</dd></div>
+    </dl>
+
+</header>
+
+
+<main id="main" class="canvas band-paper article">
+
+    <h2>The challenge</h2>
+
+    <p>Filmpac's internal Studio platform supported creative production, keywording, e-commerce administration, management reporting, and partner workflows. It had also been rebuilt repeatedly, accumulating fragmented processes, aging frontend architecture, and difficult-to-maintain services.</p>
+
+    <p>Studio eventually supported more than 50 application views. Another wholesale rewrite would have introduced substantial operational risk, while continuing indefinitely on the existing architecture was increasingly costly.</p>
+
+    <h2>The approach</h2>
+
+    <p>As technical lead, I chose incremental modernization rather than another full replacement.</p>
+
+    <p>Using a Strangler-style approach, I separated legacy and modern application paths while both remained in production. A federated GraphQL layer insulated the frontend from existing services, and coordinated Next.js routing allowed features to move gradually from older Pages Router code to newer App Router patterns.</p>
+
+    <p>I also redesigned the data architecture around purpose-specific systems: PostgreSQL for relational application and reporting data, DynamoDB for canonical partner documents, and Algolia for high-performance search and e-commerce workloads. Multiple complex migrations were completed without operational downtime.</p>
+
+    <p>Customer-facing search and filtering were moved out of an overloaded WordPress/WooCommerce database. Algolia search-query latency was approximately 10–15 ms, removing a major bottleneck contributing to 5–20 second page loads and occasional waits approaching a minute.</p>
+
+    <aside class="article__why">
+        <p class="label">Why it mattered</p>
+        <p>Modernization did not require betting the company on another rewrite.</p>
+        <p>The durable approach was to identify clean boundaries, preserve functioning systems, replace weak components incrementally, and keep production moving throughout the transition.</p>
+    </aside>
+
+    <figure class="diagram article__figure">
+        <svg viewBox="-18 -8 738 208" role="img" aria-labelledby="dgt dgd">
+            <title id="dgt">Strangler-style modernization path</title>
+            <desc id="dgd">The legacy Studio platform and a modern platform both run in production, separated by a transition layer built from federated GraphQL and coordinated Next.js routing. Beneath them sit three purpose-specific data services: PostgreSQL for application and reporting data, DynamoDB for partner documents, and Algolia for search and e-commerce.</desc>
+
+            <rect class="dg-fill" x="1" y="20" width="178" height="70"></rect>
+            <rect class="dg-box" x="1" y="20" width="178" height="70"></rect>
+            <text class="dg-t" x="90" y="52" text-anchor="middle">Legacy Studio</text>
+            <text class="dg-t dg-t--sm" x="90" y="72" text-anchor="middle">Retired incrementally</text>
+
+            <line class="dg-flow" x1="180" y1="55" x2="242" y2="55"></line>
+            <polygon class="dg-head" points="250,55 240,50 240,60"></polygon>
+
+            <rect class="dg-fill" x="250" y="20" width="200" height="70"></rect>
+            <rect class="dg-box-hi" x="250" y="20" width="200" height="70"></rect>
+            <text class="dg-t dg-t--hi" x="350" y="46" text-anchor="middle" style="font-size:12px">Transition layer</text>
+            <text class="dg-t dg-t--sm" x="350" y="64" text-anchor="middle">Federated GraphQL</text>
+            <text class="dg-t dg-t--sm" x="350" y="80" text-anchor="middle">Coordinated routing</text>
+
+            <line class="dg-flow" x1="450" y1="55" x2="512" y2="55"></line>
+            <polygon class="dg-head" points="520,55 510,50 510,60"></polygon>
+
+            <rect class="dg-fill" x="520" y="20" width="179" height="70"></rect>
+            <rect class="dg-box" x="520" y="20" width="179" height="70"></rect>
+            <text class="dg-t" x="610" y="52" text-anchor="middle">Modern platform</text>
+            <text class="dg-t dg-t--sm" x="610" y="72" text-anchor="middle">50+ views</text>
+
+            <!-- Down to the data tier -->
+            <line class="dg-thin" x1="610" y1="90" x2="610" y2="120"></line>
+            <line class="dg-thin" x1="107" y1="120" x2="610" y2="120"></line>
+            <line class="dg-thin" x1="107" y1="120" x2="107" y2="145"></line>
+            <line class="dg-thin" x1="350" y1="120" x2="350" y2="145"></line>
+            <line class="dg-thin" x1="592" y1="120" x2="592" y2="145"></line>
+
+            <rect class="dg-box" x="1" y="145" width="213" height="46"></rect>
+            <text class="dg-t" x="107" y="166" text-anchor="middle">PostgreSQL</text>
+            <text class="dg-t dg-t--sm" x="107" y="182" text-anchor="middle">Application + reporting</text>
+
+            <rect class="dg-box" x="243" y="145" width="213" height="46"></rect>
+            <text class="dg-t" x="350" y="166" text-anchor="middle">DynamoDB</text>
+            <text class="dg-t dg-t--sm" x="350" y="182" text-anchor="middle">Partner documents</text>
+
+            <rect class="dg-box" x="486" y="145" width="213" height="46"></rect>
+            <text class="dg-t" x="592" y="166" text-anchor="middle">Algolia</text>
+            <text class="dg-t dg-t--sm" x="592" y="182" text-anchor="middle">Search + e-commerce</text>
+        </svg>
+        <figcaption>Both paths live in production while the legacy side is retired piece by piece</figcaption>
+    </figure>
+
+    <h2>The result</h2>
+
+    <p>The modernization allowed new functionality to continue shipping while legacy components were retired incrementally.</p>
+
+    <p>The broader Studio platform helped the creative organization process more video clips in six months than it had during the previous three to four years, and remained sustainable even as the product organization later contracted from roughly nine people to two engineers.</p>
+
+    <p class="article__tech-label label">Technology</p>
+    <p class="article__tech">TypeScript · React · Next.js · GraphQL · PostgreSQL · DynamoDB · Algolia · AWS</p>
+
+    <p class="case-sheet-link">
+        <a href="../pdf/dan-doran-case-filmpac-modernization.pdf">Download this case study as a one-page PDF →</a>
+    </p>
+
+</main>
+
+
+<section class="canvas band-night">
+
+    <h2 class="section__label label">Continue</h2>
+
+    <ul class="onward">
+        <li>
+            <p class="label">Next case study</p>
+            <h3><a href="blue-mountain-hay-warehouse-system.html">Replacing warehouse paperwork without replacing the ERP</a></h3>
+        </li>
+        <li>
+            <p class="label">Or</p>
+            <h3><a href="../index.html#contact">Discuss a project</a></h3>
+        </li>
+    </ul>
+
+</section>
+
+<footer class="canvas band-night colophon">
+    <div class="colophon__line">
+        <span>Dan Doran · Eugene, Oregon · Remote engagements welcome</span>
+        <span><a href="../index.html">Return to index</a></span>
+    </div>
+</footer>
+
+</body>
+</html>

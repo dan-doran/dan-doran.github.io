@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unblocking five engineering teams during a mandatory T-Mobile API migration — Dan Doran</title>
+<meta name="description" content="Case study: Midpoint, an AWS API Gateway and Lambda integration layer that translated inconsistent T-Mobile REST services into stable internal contracts for five application teams, completing a mandatory migration before the carrier's sunset deadline.">
+<meta name="author" content="Dan Doran">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="canvas band-night">
+
+    <a class="backlink" href="../index.html">← Dan Doran</a>
+
+    <h1 class="article__title">Unblocking five engineering teams during a mandatory T-Mobile API migration</h1>
+
+    <p class="article__discipline">Systems Integration · API Architecture · Technical Leadership</p>
+
+    <dl class="stats article__stats">
+        <div><dt>5</dt><dd>Application teams unblocked</dd></div>
+        <div><dt>Hard</dt><dd>External sunset deadline</dd></div>
+        <div><dt>On time</dt><dd>Migration completed</dd></div>
+    </dl>
+
+</header>
+
+
+<main id="main" class="canvas band-paper article">
+
+    <h2>The challenge</h2>
+
+    <p>T-Mobile announced the retirement of the SOAP/XML services supporting critical Inseego DMS workflows, including billing, compliance, inventory, and pricing. The replacement REST APIs were inconsistent, poorly documented, and did not always behave the way the documentation implied.</p>
+
+    <p>Five internal application teams were expected to integrate with those services directly. After multiple sprints the migration was stalled — while T-Mobile's external shutdown date remained fixed.</p>
+
+    <h2>The approach</h2>
+
+    <p>As part of a small rapid-response team, I worked directly with T-Mobile engineers and business counterparts to identify the missing data, undocumented behavior, and roadmap conflicts that could not be resolved from documentation alone.</p>
+
+    <p>I then designed and implemented Midpoint, an integration layer built with AWS API Gateway, Lambda, and TypeScript. Instead of requiring every application team to understand T-Mobile's quirks, Midpoint exposed simpler, stable internal contracts:</p>
+
+    <ul>
+        <li>Centralized validation and data transformation.</li>
+        <li>Partner-specific workarounds and consistent error behavior.</li>
+        <li>Working examples and clearer internal interfaces.</li>
+        <li>One place to absorb future T-Mobile changes.</li>
+    </ul>
+
+    <p>I also supported the consuming development teams through implementation, training, troubleshooting, and interface negotiation.</p>
+
+    <aside class="article__why">
+        <p class="label">Why it mattered</p>
+        <p>The critical design decision was not simply to build another API. It was to decide where the complexity should live.</p>
+        <p>Concentrating unstable partner behavior behind one dependable boundary let five teams build against interfaces they could understand and trust.</p>
+    </aside>
+
+    <figure class="diagram article__figure">
+        <svg viewBox="-18 -8 738 164" role="img" aria-labelledby="dgt dgd">
+            <title id="dgt">Midpoint integration layer</title>
+            <desc id="dgd">Inconsistent T-Mobile REST APIs feed into a single Midpoint layer handling validation, transformation, partner workarounds and stable internal contracts, which in turn serves five application teams: billing, compliance, inventory, pricing and device management.</desc>
+
+            <rect class="dg-fill" x="1" y="49" width="148" height="62"></rect>
+            <rect class="dg-box" x="1" y="49" width="148" height="62"></rect>
+            <text class="dg-t" x="75" y="75" text-anchor="middle">T-Mobile</text>
+            <text class="dg-t" x="75" y="93" text-anchor="middle">REST APIs</text>
+            <text class="dg-t dg-t--sm" x="75" y="128" text-anchor="middle">Inconsistent · undocumented</text>
+
+            <line class="dg-flow" x1="149" y1="80" x2="190" y2="80"></line>
+            <polygon class="dg-head" points="198,80 188,75 188,85"></polygon>
+
+            <rect class="dg-fill" x="205" y="30" width="230" height="100"></rect>
+            <rect class="dg-box-hi" x="205" y="30" width="230" height="100"></rect>
+            <text class="dg-t dg-t--hi" x="320" y="62" text-anchor="middle" style="font-size:14px">Midpoint</text>
+            <text class="dg-t dg-t--sm" x="320" y="84" text-anchor="middle">Validation · transformation</text>
+            <text class="dg-t dg-t--sm" x="320" y="100" text-anchor="middle">Partner workarounds</text>
+            <text class="dg-t dg-t--sm" x="320" y="116" text-anchor="middle">Stable internal contracts</text>
+
+            <line class="dg-flow" x1="435" y1="80" x2="470" y2="80"></line>
+            <line class="dg-flow" x1="470" y1="30" x2="470" y2="126"></line>
+            <line class="dg-flow" x1="470" y1="30"  x2="488" y2="30"></line>
+            <line class="dg-flow" x1="470" y1="54"  x2="488" y2="54"></line>
+            <line class="dg-flow" x1="470" y1="78"  x2="488" y2="78"></line>
+            <line class="dg-flow" x1="470" y1="102" x2="488" y2="102"></line>
+            <line class="dg-flow" x1="470" y1="126" x2="488" y2="126"></line>
+            <polygon class="dg-head" points="496,30 486,25 486,35"></polygon>
+            <polygon class="dg-head" points="496,54 486,49 486,59"></polygon>
+            <polygon class="dg-head" points="496,78 486,73 486,83"></polygon>
+            <polygon class="dg-head" points="496,102 486,97 486,107"></polygon>
+            <polygon class="dg-head" points="496,126 486,121 486,131"></polygon>
+
+            <text class="dg-t dg-t--sm" x="500" y="12">Five application teams</text>
+            <rect class="dg-box" x="500" y="20" width="180" height="20"></rect>
+            <rect class="dg-box" x="500" y="44" width="180" height="20"></rect>
+            <rect class="dg-box" x="500" y="68" width="180" height="20"></rect>
+            <rect class="dg-box" x="500" y="92" width="180" height="20"></rect>
+            <rect class="dg-box" x="500" y="116" width="180" height="20"></rect>
+            <text class="dg-t" x="512" y="34">Billing</text>
+            <text class="dg-t" x="512" y="58">Compliance</text>
+            <text class="dg-t" x="512" y="82">Inventory</text>
+            <text class="dg-t" x="512" y="106">Pricing</text>
+            <text class="dg-t" x="512" y="130">Device management</text>
+        </svg>
+        <figcaption>One place to absorb partner change, so five teams did not each have to</figcaption>
+    </figure>
+
+    <h2>The result</h2>
+
+    <p>All five application teams were unblocked, and the organization completed the migration before T-Mobile's mandatory service sunset.</p>
+
+    <p>Midpoint separated volatile partner behavior from Inseego's product teams, and remained important enough that responsibility for it later moved to a dedicated corporate team.</p>
+
+    <p class="article__tech-label label">Technology</p>
+    <p class="article__tech">AWS API Gateway · AWS Lambda · TypeScript · REST APIs · Swagger / OpenAPI</p>
+
+    <p class="case-sheet-link">
+        <a href="../pdf/dan-doran-case-midpoint.pdf">Download this case study as a one-page PDF →</a>
+    </p>
+
+</main>
+
+
+<section class="canvas band-night">
+
+    <h2 class="section__label label">Continue</h2>
+
+    <ul class="onward">
+        <li>
+            <p class="label">Next case study</p>
+            <h3><a href="filmpac-platform-modernization.html">Modernizing a critical platform without stopping the business</a></h3>
+        </li>
+        <li>
+            <p class="label">Or</p>
+            <h3><a href="../index.html#contact">Discuss a project</a></h3>
+        </li>
+    </ul>
+
+</section>
+
+<footer class="canvas band-night colophon">
+    <div class="colophon__line">
+        <span>Dan Doran · Eugene, Oregon · Remote engagements welcome</span>
+        <span><a href="../index.html">Return to index</a></span>
+    </div>
+</footer>
+
+</body>
+</html>

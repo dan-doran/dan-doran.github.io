@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giving managers AI speed without surrendering production control — Dan Doran</title>
+<meta name="description" content="Case study: a governed environment for AI-assisted internal development — protected data, shared authentication, source-control discipline, testing, and an engineering-controlled production gate. Two managers built 20+ internal applications.">
+<meta name="author" content="Dan Doran">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="canvas band-night">
+
+    <a class="backlink" href="../index.html">← Dan Doran</a>
+
+    <h1 class="article__title">Giving managers AI speed without surrendering production control</h1>
+
+    <p class="article__discipline">AI-Assisted Development · Engineering Governance · Internal Tools</p>
+
+    <dl class="stats article__stats">
+        <div><dt>20+</dt><dd>Internal applications built</dd></div>
+        <div><dt>2</dt><dd>Manager-builders</dd></div>
+        <div><dt>3.5 mo → &lt;1 wk</dt><dd>Comparable delivery cycle</dd></div>
+    </dl>
+
+</header>
+
+
+<main id="main" class="canvas band-paper article">
+
+    <h2>The challenge</h2>
+
+    <p>Two technically capable managers had years of business knowledge embedded in spreadsheets, reports, calculators, and operating procedures. Coding agents gave them a realistic way to turn that knowledge into dashboards and internal applications without waiting for a conventional development queue.</p>
+
+    <p>The opportunity was real, but so was the risk: generated code could expose sensitive operational data, introduce inconsistent architecture, or reach production before anyone had verified what it was doing.</p>
+
+    <h2>The approach</h2>
+
+    <p>I designed a governed environment that separated rapid experimentation from production authority.</p>
+
+    <ul>
+        <li>A structured manager interview captures the workflow and requirements before implementation begins.</li>
+        <li>Protected data environments limit risk: initial ERP access was read-only, with later read/write work confined to a playground refreshed from source data.</li>
+        <li>Shared authentication and detailed access controls avoid every internal app inventing its own security model.</li>
+        <li>Business-domain guidance, atomic source-control commits, readable change logs, testing, and engineering review make generated work inspectable.</li>
+        <li>Production release remains manually controlled.</li>
+    </ul>
+
+    <p>My role is not to replace engineering with AI. It is to create the technical boundaries, reusable infrastructure, and review process that let knowledgeable managers move quickly without quietly becoming production administrators.</p>
+
+    <aside class="article__why">
+        <p class="label">Why it mattered</p>
+        <p>The important innovation was not faster code generation.</p>
+        <p>It was creating a system in which the people who understand the business can build rapidly while engineering retains control of data boundaries, security, architecture, and production risk.</p>
+    </aside>
+
+    <figure class="diagram article__figure">
+        <svg viewBox="-18 -8 738 168" role="img" aria-labelledby="dgt dgd">
+            <title id="dgt">Governed path from manager to production</title>
+            <desc id="dgd">A manager working with a coding agent passes through requirements and guardrails, then protected data, then testing and engineering review, before anything reaches production. Requirements, protected data, and review together form the governed environment; the production release itself stays manually controlled.</desc>
+
+            <rect class="dg-fill" x="1" y="30" width="117" height="80"></rect>
+            <rect class="dg-box" x="1" y="30" width="117" height="80"></rect>
+            <text class="dg-t dg-t--sm" x="60" y="64" text-anchor="middle">Manager +</text>
+            <text class="dg-t dg-t--sm" x="60" y="80" text-anchor="middle">coding agent</text>
+
+            <line class="dg-flow" x1="119" y1="70" x2="136" y2="70"></line>
+            <polygon class="dg-head" points="145,70 135,65 135,75"></polygon>
+
+            <rect class="dg-fill" x="145" y="30" width="119" height="80"></rect>
+            <rect class="dg-box" x="145" y="30" width="119" height="80"></rect>
+            <text class="dg-t dg-t--sm" x="204" y="64" text-anchor="middle">Requirements</text>
+            <text class="dg-t dg-t--sm" x="204" y="80" text-anchor="middle">&amp; guardrails</text>
+
+            <line class="dg-flow" x1="264" y1="70" x2="281" y2="70"></line>
+            <polygon class="dg-head" points="290,70 280,65 280,75"></polygon>
+
+            <rect class="dg-fill" x="290" y="30" width="119" height="80"></rect>
+            <rect class="dg-box" x="290" y="30" width="119" height="80"></rect>
+            <text class="dg-t dg-t--sm" x="349" y="64" text-anchor="middle">Protected</text>
+            <text class="dg-t dg-t--sm" x="349" y="80" text-anchor="middle">data</text>
+
+            <line class="dg-flow" x1="409" y1="70" x2="426" y2="70"></line>
+            <polygon class="dg-head" points="435,70 425,65 425,75"></polygon>
+
+            <rect class="dg-fill" x="435" y="30" width="119" height="80"></rect>
+            <rect class="dg-box" x="435" y="30" width="119" height="80"></rect>
+            <text class="dg-t dg-t--sm" x="494" y="57" text-anchor="middle">Test &amp;</text>
+            <text class="dg-t dg-t--sm" x="494" y="73" text-anchor="middle">engineering</text>
+            <text class="dg-t dg-t--sm" x="494" y="89" text-anchor="middle">review</text>
+
+            <line class="dg-flow" x1="554" y1="70" x2="571" y2="70"></line>
+            <polygon class="dg-head" points="580,70 570,65 570,75"></polygon>
+
+            <rect class="dg-fill" x="580" y="30" width="119" height="80"></rect>
+            <rect class="dg-box-hi" x="580" y="30" width="119" height="80"></rect>
+            <text class="dg-t dg-t--hi" x="639" y="66" text-anchor="middle">Production</text>
+            <text class="dg-t dg-t--sm" x="639" y="84" text-anchor="middle">Manual gate</text>
+
+            <!-- Bracket marking the governed span -->
+            <line class="dg-thin" x1="145" y1="120" x2="145" y2="128"></line>
+            <line class="dg-thin" x1="145" y1="128" x2="554" y2="128"></line>
+            <line class="dg-thin" x1="554" y1="120" x2="554" y2="128"></line>
+            <text class="dg-t dg-t--sm" x="349" y="146" text-anchor="middle">Governed environment</text>
+        </svg>
+        <figcaption>Speed inside the guardrails; the release itself stays with engineering</figcaption>
+    </figure>
+
+    <h2>The result</h2>
+
+    <p>The two managers have used the environment to create more than 20 internal applications and dashboards across warehouse, sales, accounting, and management workflows.</p>
+
+    <p>For one comparable internal application, delivery time fell from approximately 3.5 months to less than one week while production control remained with engineering.</p>
+
+    <p class="article__tech-label label">Technology</p>
+    <p class="article__tech">AI coding agents · OAuth-style authentication · ACLs · Source control · Protected ERP data · Testing · Production review</p>
+
+    <p class="case-sheet-link">
+        <a href="../pdf/dan-doran-case-governed-ai.pdf">Download this case study as a one-page PDF →</a>
+    </p>
+
+</main>
+
+
+<section class="canvas band-night">
+
+    <h2 class="section__label label">Continue</h2>
+
+    <ul class="onward">
+        <li>
+            <p class="label">Next case study</p>
+            <h3><a href="midpoint-tmobile-api-migration.html">Unblocking five engineering teams during a mandatory T-Mobile API migration</a></h3>
+        </li>
+        <li>
+            <p class="label">Or</p>
+            <h3><a href="../index.html#contact">Discuss a project</a></h3>
+        </li>
+    </ul>
+
+</section>
+
+<footer class="canvas band-night colophon">
+    <div class="colophon__line">
+        <span>Dan Doran · Eugene, Oregon · Remote engagements welcome</span>
+        <span><a href="../index.html">Return to index</a></span>
+    </div>
+</footer>
+
+</body>
+</html>

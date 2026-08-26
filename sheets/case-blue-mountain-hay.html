@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Case Study — Blue Mountain Hay Warehouse Production System</title>
+<link rel="stylesheet" href="../css/sheet.css">
+</head>
+<body class="sheet--case">
+
+<header class="sheet-head">
+    <p class="sheet-head__eyebrow">Case study · Blue Mountain Hay</p>
+    <h1>Replacing warehouse paperwork without replacing the ERP</h1>
+    <p class="sheet-head__discipline">Operational Software · Systems Integration · Workflow Modernization</p>
+    <dl class="stats">
+        <div><dt>~$2M</dt><dd>Annual product flow</dd></div>
+        <div><dt>Paper → digital</dt><dd>Production capture</dd></div>
+        <div><dt>No API</dt><dd>Or database access</dd></div>
+    </dl>
+</header>
+
+<div class="case-body">
+
+    <div>
+        <section>
+            <h2>The challenge</h2>
+            <p>A growing warehouse moving approximately $2M in product annually depended on paper forms to capture manufacturing activity. Records for labor, inventory lots, materials consumed, production output, and waste were often incomplete, forcing management and accounting to reconstruct missing information.</p>
+            <p>Much of the warehouse workforce spoke Spanish while the forms were in English. The company's proprietary ERP was controlled by an outside vendor and exposed neither an API nor direct database access.</p>
+        </section>
+
+        <section>
+            <h2>The approach</h2>
+            <p>I started with the work itself: interviews with warehouse management and accounting, samples of existing paperwork and reports, and direct observation of production workflows. The goal was not to reproduce the paper forms on a screen; it was to make data capture fit the way employees actually worked.</p>
+            <p>I independently designed and built an iPad production application with large, high-visibility Spanish-language workflows for labor timing, inventory lots, quantities consumed and produced, waste, comments, photos, scanning, and label printing.</p>
+            <p>Because the ERP could not be integrated conventionally, I built controlled adapters around the interfaces it did expose — reports, exports, accessible application data, and form-based workflows — allowing the new system to complement the ERP rather than forcing an expensive replacement.</p>
+        </section>
+    </div>
+
+    <div class="case-aside">
+        <section>
+            <h2>The result</h2>
+            <p>Paper-based production capture was eliminated. Management and accounting gained substantially better information about labor, inventory, waste, production quantities, and manufacturing costs, while warehouse employees received a workflow designed around their actual work.</p>
+            <p>The company gained a more scalable operational system without first undertaking an ERP replacement.</p>
+        </section>
+
+        <section class="case-why">
+            <h2>Why it mattered</h2>
+            <p>The central technical constraint — an ERP that could not readily be changed — did not have to become the business constraint.</p>
+            <p>The solution was to preserve the incumbent system, build around its limitations, and put the new experience where the actual work happened.</p>
+        </section>
+
+        <section class="case-tech">
+            <h2>Technology</h2>
+            <p>TypeScript · React · PWA · IndexedDB / Dexie · Vite · Barcode scanners · Label printing · ERP adapters</p>
+        </section>
+    </div>
+
+</div>
+
+<figure class="case-figure">
+    <svg viewBox="-18 -8 738 200" role="img" aria-label="Warehouse work observed on the floor feeds an iPad workflow in Spanish, then a review and integration step of controlled adapters, then the existing ERP which offers no API and no database access. Scanning, label printing, photos and lots all feed the iPad workflow.">
+        <rect class="dg-fill" x="1" y="40" width="153" height="76"></rect>
+        <rect class="dg-box" x="1" y="40" width="153" height="76"></rect>
+        <text class="dg-t" x="77" y="72" text-anchor="middle">Warehouse work</text>
+        <text class="dg-t dg-t--sm" x="77" y="92" text-anchor="middle">Observed on the floor</text>
+
+        <line class="dg-flow" x1="155" y1="78" x2="182" y2="78"></line>
+        <polygon class="dg-head" points="190,78 180,73 180,83"></polygon>
+
+        <rect class="dg-fill" x="190" y="40" width="155" height="76"></rect>
+        <rect class="dg-box-hi" x="190" y="40" width="155" height="76"></rect>
+        <text class="dg-t dg-t--hi" x="267" y="70" text-anchor="middle" style="font-size:11px">iPad workflow</text>
+        <text class="dg-t dg-t--sm" x="267" y="90" text-anchor="middle">Spanish · at source</text>
+
+        <line class="dg-flow" x1="345" y1="78" x2="372" y2="78"></line>
+        <polygon class="dg-head" points="380,78 370,73 370,83"></polygon>
+
+        <rect class="dg-fill" x="380" y="40" width="155" height="76"></rect>
+        <rect class="dg-box" x="380" y="40" width="155" height="76"></rect>
+        <text class="dg-t" x="457" y="68" text-anchor="middle">Review &amp;</text>
+        <text class="dg-t" x="457" y="84" text-anchor="middle">integration</text>
+        <text class="dg-t dg-t--sm" x="457" y="103" text-anchor="middle">Controlled adapters</text>
+
+        <line class="dg-flow" x1="535" y1="78" x2="562" y2="78"></line>
+        <polygon class="dg-head" points="570,78 560,73 560,83"></polygon>
+
+        <rect class="dg-fill" x="570" y="40" width="129" height="76"></rect>
+        <rect class="dg-box" x="570" y="40" width="129" height="76"></rect>
+        <text class="dg-t" x="634" y="72" text-anchor="middle">Existing ERP</text>
+        <text class="dg-t dg-t--sm" x="634" y="92" text-anchor="middle">No API · no DB</text>
+
+        <polygon class="dg-head" points="267,116 262,126 272,126"></polygon>
+        <line class="dg-thin" x1="267" y1="126" x2="267" y2="133"></line>
+        <line class="dg-thin" x1="80" y1="133" x2="620" y2="133"></line>
+        <line class="dg-thin" x1="80" y1="133" x2="80" y2="150"></line>
+        <line class="dg-thin" x1="260" y1="133" x2="260" y2="150"></line>
+        <line class="dg-thin" x1="440" y1="133" x2="440" y2="150"></line>
+        <line class="dg-thin" x1="620" y1="133" x2="620" y2="150"></line>
+
+        <rect class="dg-box" x="1" y="150" width="158" height="26"></rect>
+        <text class="dg-t dg-t--sm" x="80" y="167" text-anchor="middle">Scanning</text>
+
+        <rect class="dg-box" x="181" y="150" width="158" height="26"></rect>
+        <text class="dg-t dg-t--sm" x="260" y="167" text-anchor="middle">Label printing</text>
+
+        <rect class="dg-box" x="361" y="150" width="158" height="26"></rect>
+        <text class="dg-t dg-t--sm" x="440" y="167" text-anchor="middle">Photos &amp; comments</text>
+
+        <rect class="dg-box" x="541" y="150" width="158" height="26"></rect>
+        <text class="dg-t dg-t--sm" x="620" y="167" text-anchor="middle">Lots &amp; quantities</text>
+    </svg>
+    <figcaption>The new experience sits where the work happens; the ERP keeps its place downstream</figcaption>
+</figure>
+
+<footer class="sheet-foot">
+    <span>Dan Doran · Senior Technical Lead</span>
+    <a href="tel:+15416009514">(541) 600-9514</a>
+    <a href="mailto:dan.doran.consultant@icloud.com">dan.doran.consultant@icloud.com</a>
+</footer>
+
+</body>
+</html>

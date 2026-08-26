@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Case Study — Governed AI-Assisted Internal Development</title>
+<link rel="stylesheet" href="../css/sheet.css">
+</head>
+<body class="sheet--case">
+
+<header class="sheet-head">
+    <p class="sheet-head__eyebrow">Case study · Independent</p>
+    <h1>Giving managers AI speed without surrendering production control</h1>
+    <p class="sheet-head__discipline">AI-Assisted Development · Engineering Governance · Internal Tools</p>
+    <dl class="stats">
+        <div><dt>20+</dt><dd>Internal applications built</dd></div>
+        <div><dt>2</dt><dd>Manager-builders</dd></div>
+        <div><dt>3.5 mo → &lt;1 wk</dt><dd>Comparable delivery cycle</dd></div>
+    </dl>
+</header>
+
+<div class="case-body">
+
+    <div>
+        <section>
+            <h2>The challenge</h2>
+            <p>Two technically capable managers had years of business knowledge embedded in spreadsheets, reports, calculators, and operating procedures. Coding agents gave them a realistic way to turn that knowledge into dashboards and internal applications without waiting for a conventional development queue.</p>
+            <p>The opportunity was real, but so was the risk: generated code could expose sensitive operational data, introduce inconsistent architecture, or reach production before anyone had verified what it was doing.</p>
+        </section>
+
+        <section>
+            <h2>The approach</h2>
+            <p>I designed a governed environment that separated rapid experimentation from production authority.</p>
+            <ul>
+                <li>A structured manager interview captures the workflow and requirements before implementation begins.</li>
+                <li>Protected data environments limit risk: initial ERP access was read-only, with later read/write work confined to a playground refreshed from source data.</li>
+                <li>Shared authentication and detailed access controls avoid every internal app inventing its own security model.</li>
+                <li>Business-domain guidance, atomic commits, readable change logs, testing, and engineering review make generated work inspectable.</li>
+                <li>Production release remains manually controlled.</li>
+            </ul>
+        </section>
+    </div>
+
+    <div class="case-aside">
+        <section>
+            <h2>The result</h2>
+            <p>The two managers have used the environment to create more than 20 internal applications and dashboards across warehouse, sales, accounting, and management workflows.</p>
+            <p>For one comparable internal application, delivery time fell from approximately 3.5 months to less than one week while production control remained with engineering.</p>
+        </section>
+
+        <section class="case-why">
+            <h2>Why it mattered</h2>
+            <p>My role is not to replace engineering with AI. It is to create the boundaries and review process that let knowledgeable managers move quickly without quietly becoming production administrators.</p>
+            <p>The important innovation was not faster code generation. It was a system where the people who understand the business can build rapidly while engineering retains control of data, security, and production risk.</p>
+        </section>
+
+        <section class="case-tech">
+            <h2>Technology</h2>
+            <p>AI coding agents · OAuth-style authentication · ACLs · Source control · Protected ERP data · Testing · Production review</p>
+        </section>
+    </div>
+
+</div>
+
+<figure class="case-figure">
+    <svg viewBox="-18 -8 738 168" role="img" aria-label="A manager working with a coding agent passes through requirements and guardrails, then protected data, then testing and engineering review, before anything reaches production. The first three stages form the governed environment; the production release stays a manual gate.">
+        <rect class="dg-fill" x="1" y="30" width="117" height="80"></rect>
+        <rect class="dg-box" x="1" y="30" width="117" height="80"></rect>
+        <text class="dg-t dg-t--sm" x="60" y="64" text-anchor="middle">Manager +</text>
+        <text class="dg-t dg-t--sm" x="60" y="80" text-anchor="middle">coding agent</text>
+
+        <line class="dg-flow" x1="119" y1="70" x2="136" y2="70"></line>
+        <polygon class="dg-head" points="145,70 135,65 135,75"></polygon>
+
+        <rect class="dg-fill" x="145" y="30" width="119" height="80"></rect>
+        <rect class="dg-box" x="145" y="30" width="119" height="80"></rect>
+        <text class="dg-t dg-t--sm" x="204" y="64" text-anchor="middle">Requirements</text>
+        <text class="dg-t dg-t--sm" x="204" y="80" text-anchor="middle">&amp; guardrails</text>
+
+        <line class="dg-flow" x1="264" y1="70" x2="281" y2="70"></line>
+        <polygon class="dg-head" points="290,70 280,65 280,75"></polygon>
+
+        <rect class="dg-fill" x="290" y="30" width="119" height="80"></rect>
+        <rect class="dg-box" x="290" y="30" width="119" height="80"></rect>
+        <text class="dg-t dg-t--sm" x="349" y="64" text-anchor="middle">Protected</text>
+        <text class="dg-t dg-t--sm" x="349" y="80" text-anchor="middle">data</text>
+
+        <line class="dg-flow" x1="409" y1="70" x2="426" y2="70"></line>
+        <polygon class="dg-head" points="435,70 425,65 425,75"></polygon>
+
+        <rect class="dg-fill" x="435" y="30" width="119" height="80"></rect>
+        <rect class="dg-box" x="435" y="30" width="119" height="80"></rect>
+        <text class="dg-t dg-t--sm" x="494" y="57" text-anchor="middle">Test &amp;</text>
+        <text class="dg-t dg-t--sm" x="494" y="73" text-anchor="middle">engineering</text>
+        <text class="dg-t dg-t--sm" x="494" y="89" text-anchor="middle">review</text>
+
+        <line class="dg-flow" x1="554" y1="70" x2="571" y2="70"></line>
+        <polygon class="dg-head" points="580,70 570,65 570,75"></polygon>
+
+        <rect class="dg-fill" x="580" y="30" width="119" height="80"></rect>
+        <rect class="dg-box-hi" x="580" y="30" width="119" height="80"></rect>
+        <text class="dg-t dg-t--hi" x="639" y="66" text-anchor="middle">Production</text>
+        <text class="dg-t dg-t--sm" x="639" y="84" text-anchor="middle">Manual gate</text>
+
+        <line class="dg-thin" x1="145" y1="120" x2="145" y2="128"></line>
+        <line class="dg-thin" x1="145" y1="128" x2="554" y2="128"></line>
+        <line class="dg-thin" x1="554" y1="120" x2="554" y2="128"></line>
+        <text class="dg-t dg-t--sm" x="349" y="146" text-anchor="middle">Governed environment</text>
+    </svg>
+    <figcaption>Speed inside the guardrails; the release itself stays with engineering</figcaption>
+</figure>
+
+<footer class="sheet-foot">
+    <span>Dan Doran · Senior Technical Lead</span>
+    <a href="tel:+15416009514">(541) 600-9514</a>
+    <a href="mailto:dan.doran.consultant@icloud.com">dan.doran.consultant@icloud.com</a>
+</footer>
+
+</body>
+</html>

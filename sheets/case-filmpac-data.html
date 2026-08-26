@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Case Study — Hybrid Data Architecture</title>
+<link rel="stylesheet" href="../css/sheet.css">
+</head>
+<body class="sheet--case">
+
+<header class="sheet-head">
+    <p class="sheet-head__eyebrow">Case study · Filmpac</p>
+    <h1>Separating conflicting workloads with a hybrid data architecture</h1>
+    <p class="sheet-head__discipline">Data Architecture · Migration · E-Commerce Performance</p>
+    <dl class="stats">
+        <div><dt>3</dt><dd>Purpose-specific stores</dd></div>
+        <div><dt>Zero</dt><dd>Migration downtime</dd></div>
+        <div><dt>10–15 ms</dt><dd>Search-query latency</dd></div>
+    </dl>
+</header>
+
+<div class="case-body">
+
+    <div>
+        <section>
+            <h2>The challenge</h2>
+            <p>Filmpac's application data had to serve several very different needs: transactional application behavior, flexible relational reporting, fast partner data distribution, and customer-facing search and filtering. Treating those workloads as if they belonged in one datastore was creating friction in both development and operations.</p>
+            <p>The e-commerce path was especially visible. Search and filtering depended heavily on an overloaded WordPress/WooCommerce database, contributing to 5–20 second page loads and occasional waits approaching a minute.</p>
+        </section>
+
+        <section>
+            <h2>The approach</h2>
+            <p>I redesigned the data layer so each technology had a deliberately narrow responsibility rather than allowing responsibilities to blur.</p>
+            <ul>
+                <li>PostgreSQL became the relational source for application data and flexible reporting.</li>
+                <li>DynamoDB held canonical document representations used for partner distribution.</li>
+                <li>Algolia served denormalized search and e-commerce indexes optimized for fast retrieval.</li>
+            </ul>
+            <p>I added explicit adapter, validation, and transformation layers so changes moved between these representations intentionally rather than relying on fragile implicit synchronization. Multiple migrations were completed without production downtime.</p>
+            <p>Customer-facing search and filtering were moved from WooCommerce database queries to Algolia indexes, where search-query latency was approximately 10–15 ms.</p>
+        </section>
+    </div>
+
+    <div class="case-aside">
+        <section>
+            <h2>The result</h2>
+            <p>The architecture improved reporting flexibility, partner data delivery, developer maintainability, and customer-facing performance while keeping data responsibilities understandable.</p>
+            <p>More importantly, the system no longer required one storage technology to be simultaneously optimized for incompatible workloads.</p>
+        </section>
+
+        <section class="case-why">
+            <h2>Why it mattered</h2>
+            <p>The value of a hybrid datastore is not the number of technologies. It is the clarity of their boundaries.</p>
+            <p>Each store had one job it was good at, while explicit transformation layers kept the system understandable and the data consistent.</p>
+        </section>
+
+        <section class="case-tech">
+            <h2>Technology</h2>
+            <p>PostgreSQL · DynamoDB · Algolia · Zod · TypeScript · Data migration · Search indexing</p>
+        </section>
+    </div>
+
+</div>
+
+<figure class="case-figure">
+    <svg viewBox="-18 -8 738 180" role="img" aria-label="PostgreSQL holds application and reporting data. A validated transformation layer built with Zod and explicit adapters moves data into DynamoDB for partner documents and Algolia for search and e-commerce.">
+        <rect class="dg-fill" x="1" y="55" width="178" height="70"></rect>
+        <rect class="dg-box" x="1" y="55" width="178" height="70"></rect>
+        <text class="dg-t" x="90" y="85" text-anchor="middle" style="font-size:11px">PostgreSQL</text>
+        <text class="dg-t dg-t--sm" x="90" y="105" text-anchor="middle">Application + reporting</text>
+
+        <line class="dg-flow" x1="180" y1="90" x2="242" y2="90"></line>
+        <polygon class="dg-head" points="250,90 240,85 240,95"></polygon>
+
+        <rect class="dg-fill" x="250" y="55" width="190" height="70"></rect>
+        <rect class="dg-box-hi" x="250" y="55" width="190" height="70"></rect>
+        <text class="dg-t dg-t--hi" x="345" y="80" text-anchor="middle" style="font-size:11px">Validated</text>
+        <text class="dg-t dg-t--hi" x="345" y="97" text-anchor="middle" style="font-size:11px">transforms</text>
+        <text class="dg-t dg-t--sm" x="345" y="115" text-anchor="middle">Zod · explicit adapters</text>
+
+        <line class="dg-flow" x1="440" y1="90" x2="480" y2="90"></line>
+        <line class="dg-flow" x1="480" y1="51" x2="480" y2="129"></line>
+        <line class="dg-flow" x1="480" y1="51" x2="512" y2="51"></line>
+        <line class="dg-flow" x1="480" y1="129" x2="512" y2="129"></line>
+        <polygon class="dg-head" points="520,51 510,46 510,56"></polygon>
+        <polygon class="dg-head" points="520,129 510,124 510,134"></polygon>
+
+        <rect class="dg-fill" x="520" y="20" width="179" height="62"></rect>
+        <rect class="dg-box" x="520" y="20" width="179" height="62"></rect>
+        <text class="dg-t" x="610" y="47" text-anchor="middle">DynamoDB</text>
+        <text class="dg-t dg-t--sm" x="610" y="65" text-anchor="middle">Partner documents</text>
+
+        <rect class="dg-fill" x="520" y="98" width="179" height="62"></rect>
+        <rect class="dg-box" x="520" y="98" width="179" height="62"></rect>
+        <text class="dg-t" x="610" y="125" text-anchor="middle">Algolia</text>
+        <text class="dg-t dg-t--sm" x="610" y="143" text-anchor="middle">Search + e-commerce</text>
+    </svg>
+    <figcaption>One job per store, and nothing crosses between them implicitly</figcaption>
+</figure>
+
+<footer class="sheet-foot">
+    <span>Dan Doran · Senior Technical Lead</span>
+    <a href="tel:+15416009514">(541) 600-9514</a>
+    <a href="mailto:dan.doran.consultant@icloud.com">dan.doran.consultant@icloud.com</a>
+</footer>
+
+</body>
+</html>

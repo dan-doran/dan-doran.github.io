@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Case Study — Midpoint, T-Mobile API Migration</title>
+<link rel="stylesheet" href="../css/sheet.css">
+</head>
+<body class="sheet--case">
+
+<header class="sheet-head">
+    <p class="sheet-head__eyebrow">Case study · Inseego DMS</p>
+    <h1>Unblocking five engineering teams during a mandatory T-Mobile API migration</h1>
+    <p class="sheet-head__discipline">Systems Integration · API Architecture · Technical Leadership</p>
+    <dl class="stats">
+        <div><dt>5</dt><dd>Application teams unblocked</dd></div>
+        <div><dt>Hard</dt><dd>External sunset deadline</dd></div>
+        <div><dt>On time</dt><dd>Migration completed</dd></div>
+    </dl>
+</header>
+
+<div class="case-body">
+
+    <div>
+        <section>
+            <h2>The challenge</h2>
+            <p>T-Mobile announced the retirement of the SOAP/XML services supporting critical Inseego DMS workflows, including billing, compliance, inventory, and pricing. The replacement REST APIs were inconsistent, poorly documented, and did not always behave the way the documentation implied.</p>
+            <p>Five internal application teams were expected to integrate with those services directly. After multiple sprints the migration was stalled — while T-Mobile's external shutdown date remained fixed.</p>
+        </section>
+
+        <section>
+            <h2>The approach</h2>
+            <p>As part of a small rapid-response team, I worked directly with T-Mobile engineers and business counterparts to identify the missing data, undocumented behavior, and roadmap conflicts that could not be resolved from documentation alone.</p>
+            <p>I then designed and implemented Midpoint, an integration layer built with AWS API Gateway, Lambda, and TypeScript. Instead of requiring every application team to understand T-Mobile's quirks, Midpoint exposed simpler, stable internal contracts:</p>
+            <ul>
+                <li>Centralized validation and data transformation.</li>
+                <li>Partner-specific workarounds and consistent error behavior.</li>
+                <li>Working examples and clearer internal interfaces.</li>
+                <li>One place to absorb future T-Mobile changes.</li>
+            </ul>
+            <p>I also supported the consuming development teams through implementation, training, troubleshooting, and interface negotiation.</p>
+        </section>
+    </div>
+
+    <div class="case-aside">
+        <section>
+            <h2>The result</h2>
+            <p>All five application teams were unblocked, and the organization completed the migration before T-Mobile's mandatory service sunset.</p>
+            <p>Midpoint separated volatile partner behavior from Inseego's product teams, and remained important enough that responsibility for it later moved to a dedicated corporate team.</p>
+        </section>
+
+        <section class="case-why">
+            <h2>Why it mattered</h2>
+            <p>The critical design decision was not simply to build another API. It was to decide where the complexity should live.</p>
+            <p>Concentrating unstable partner behavior behind one dependable boundary let five teams build against interfaces they could understand and trust.</p>
+        </section>
+
+        <section class="case-tech">
+            <h2>Technology</h2>
+            <p>AWS API Gateway · AWS Lambda · TypeScript · REST APIs · Swagger / OpenAPI</p>
+        </section>
+    </div>
+
+</div>
+
+<figure class="case-figure">
+    <svg viewBox="-18 -8 738 164" role="img" aria-label="Inconsistent T-Mobile REST APIs feed into a single Midpoint layer handling validation, transformation, partner workarounds and stable internal contracts, which serves five application teams.">
+        <rect class="dg-fill" x="1" y="49" width="148" height="62"></rect>
+        <rect class="dg-box" x="1" y="49" width="148" height="62"></rect>
+        <text class="dg-t" x="75" y="75" text-anchor="middle">T-Mobile</text>
+        <text class="dg-t" x="75" y="93" text-anchor="middle">REST APIs</text>
+        <text class="dg-t dg-t--sm" x="75" y="128" text-anchor="middle">Inconsistent · undocumented</text>
+
+        <line class="dg-flow" x1="149" y1="80" x2="190" y2="80"></line>
+        <polygon class="dg-head" points="198,80 188,75 188,85"></polygon>
+
+        <rect class="dg-fill" x="205" y="30" width="230" height="100"></rect>
+        <rect class="dg-box-hi" x="205" y="30" width="230" height="100"></rect>
+        <text class="dg-t dg-t--hi" x="320" y="62" text-anchor="middle" style="font-size:14px">Midpoint</text>
+        <text class="dg-t dg-t--sm" x="320" y="84" text-anchor="middle">Validation · transformation</text>
+        <text class="dg-t dg-t--sm" x="320" y="100" text-anchor="middle">Partner workarounds</text>
+        <text class="dg-t dg-t--sm" x="320" y="116" text-anchor="middle">Stable internal contracts</text>
+
+        <line class="dg-flow" x1="435" y1="80" x2="470" y2="80"></line>
+        <line class="dg-flow" x1="470" y1="30" x2="470" y2="126"></line>
+        <line class="dg-flow" x1="470" y1="30"  x2="488" y2="30"></line>
+        <line class="dg-flow" x1="470" y1="54"  x2="488" y2="54"></line>
+        <line class="dg-flow" x1="470" y1="78"  x2="488" y2="78"></line>
+        <line class="dg-flow" x1="470" y1="102" x2="488" y2="102"></line>
+        <line class="dg-flow" x1="470" y1="126" x2="488" y2="126"></line>
+        <polygon class="dg-head" points="496,30 486,25 486,35"></polygon>
+        <polygon class="dg-head" points="496,54 486,49 486,59"></polygon>
+        <polygon class="dg-head" points="496,78 486,73 486,83"></polygon>
+        <polygon class="dg-head" points="496,102 486,97 486,107"></polygon>
+        <polygon class="dg-head" points="496,126 486,121 486,131"></polygon>
+
+        <text class="dg-t dg-t--sm" x="500" y="12">Five application teams</text>
+        <rect class="dg-box" x="500" y="20" width="180" height="20"></rect>
+        <rect class="dg-box" x="500" y="44" width="180" height="20"></rect>
+        <rect class="dg-box" x="500" y="68" width="180" height="20"></rect>
+        <rect class="dg-box" x="500" y="92" width="180" height="20"></rect>
+        <rect class="dg-box" x="500" y="116" width="180" height="20"></rect>
+        <text class="dg-t" x="512" y="34">Billing</text>
+        <text class="dg-t" x="512" y="58">Compliance</text>
+        <text class="dg-t" x="512" y="82">Inventory</text>
+        <text class="dg-t" x="512" y="106">Pricing</text>
+        <text class="dg-t" x="512" y="130">Device management</text>
+    </svg>
+    <figcaption>One place to absorb partner change, so five teams did not each have to</figcaption>
+</figure>
+
+<footer class="sheet-foot">
+    <span>Dan Doran · Senior Technical Lead</span>
+    <a href="tel:+15416009514">(541) 600-9514</a>
+    <a href="mailto:dan.doran.consultant@icloud.com">dan.doran.consultant@icloud.com</a>
+</footer>
+
+</body>
+</html>
